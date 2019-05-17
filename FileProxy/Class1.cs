@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileProxy
+namespace StoicDreams.FileProxy
 {
 	public class Class1
 	{
