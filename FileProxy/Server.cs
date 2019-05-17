@@ -1,4 +1,5 @@
 ﻿using System;
+using StoicDreams.FileProxy.Interface;
 
 namespace StoicDreams.FileProxy
 {
@@ -7,7 +8,7 @@ namespace StoicDreams.FileProxy
 	/// </summary>
 	public class Server : Interface.IServer
 	{
-		public Server()
+		public Server(IServerConfig config)
 		{
 
 		}

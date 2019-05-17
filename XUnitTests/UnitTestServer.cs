@@ -10,7 +10,10 @@ namespace XUnitTests
 		[Fact]
 		public void TestInit()
 		{
-			IServer server = new Server();
+			IServerConfig config = new ServerConfig() {
+
+			};
+			IServer server = new Server(config);
 		}
 	}
 }
