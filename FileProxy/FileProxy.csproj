@@ -2,6 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <Authors>Erik Gassler</Authors>
+    <Company>Stoic Dreams</Company>
+    <Product>File Proxy</Product>
+    <Description>Simple library to create a proxy service for a website to host files that are actually hosted in a different location and/or domain.</Description>
+    <Copyright>Copyright (c) 2019 Stoic Dreams</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/StoicDreams/FileProxy</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/StoicDreams/FileProxy</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageReleaseNotes>Pre-alpha: Project is not functional yet.</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Docs\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
