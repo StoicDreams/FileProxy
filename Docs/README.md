@@ -26,4 +26,4 @@ We are not currently accepting contributions to this project. But if you'd like 
 
 ## License
 
-This project is [public domain](https://github.com/StoicDreams/FileProxy/blob/master/docs/LICENSE.md)
+This project is [public domain](https://github.com/StoicDreams/FileProxy/blob/master/Docs/LICENSE.md)
