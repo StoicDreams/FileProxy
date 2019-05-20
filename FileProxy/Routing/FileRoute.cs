@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Filter;
 
@@ -7,6 +6,14 @@ namespace StoicDreams.FileProxy.Routing
 {
 	public class FileRoute : IRoute
 	{
+		public bool RouteIsRemote { get; private set; }
+		public FileRoute(string requestedPath, string routedPath)
+		{
+			RequestedPath = requestedPath;
+			RoutedPath = routedPath;
+			ValidateSetup();
+			RouteIsRemote = Common.RouteIsRemote(routedPath);
+		}
 		/// <summary>
 		/// Complete relative path to match incoming requests from client.
 		/// Note: Requested URL must match exactly up to any query string data (not-case-sensitive)
@@ -30,32 +37,13 @@ namespace StoicDreams.FileProxy.Routing
 			}
 			return RoutedPath;
 		}
-		public async Task GetRoutedFile(string requestedPath)
-		{
-
-		}
 		/// <summary>
 		/// Run after initializing and setting path values to validate path values.
 		/// </summary>
 		/// <returns></returns>
 		public bool ValidateSetup()
 		{
-			if (string.IsNullOrWhiteSpace(RequestedPath))
-			{
-				throw new Exception("FileRoute.RequestedPath cannot be empty or null.");
-			}
-			if (string.IsNullOrWhiteSpace(RoutedPath))
-			{
-				throw new Exception("FileRoute.RoutedPath cannot be empty or null.");
-			}
-			if (RequestedPath.ToLower() == RoutedPath.ToLower())
-			{
-				throw new Exception("FileRoute: RoutedPath and RequestedPath cannot be equal.");
-			}
-			if(RequestedPath != RequestedPath.FilterURLToRoutePath())
-			{
-				throw new Exception("FileRoute: Invalid RequestedPath.");
-			}
+			Common.ValidateSetup(RequestedPath, RoutedPath, "FileRoute");
 			return true;
 		}
 	}

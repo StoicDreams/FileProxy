@@ -19,5 +19,15 @@ namespace XUnitTests
 		{
 			Assert.Equal(expectedResult, url.FilterURLToRoutePath());
 		}
+		[Theory]
+		[InlineData("", false)]
+		[InlineData(@"http://some.web/path", true)]
+		[InlineData(@"http://some.web/folder/file", true)]
+		[InlineData(@"http://some.web/folder/file.json", true)]
+		[InlineData(@"/folder/file.json", false)]
+		public void TestFilterIsProtocolFormat(string urlPath, bool result)
+		{
+			Assert.Equal(result, Matches.IsProtocolFormat(urlPath));
+		}
 	}
 }

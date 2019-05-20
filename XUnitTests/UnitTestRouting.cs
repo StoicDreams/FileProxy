@@ -12,32 +12,24 @@ namespace XUnitTests
 		[Fact]
 		public void TestRoutingInit()
 		{
-			IRoute fileRoute = new FileRoute();
-			IRoute folderRoute = new FolderRoute();
+			IRoute fileRoute = new FileRoute("/a/test", "/b/test");
+			IRoute folderRoute = new FolderRoute("/a/", "/b/");
 		}
 		[Theory]
 		[InlineData("/a/test.json", "/b/test.json")]
 		[InlineData("/a/test.json?result=1", "/b/test.json?result=1")]
-		public async Task TestFolderRouting(string incomingPath, string expectedRoute)
+		public void TestFolderRouting(string incomingPath, string expectedRoute)
 		{
-			IRoute folderRoute = new FolderRoute()
-			{
-				RequestedPath = "/a/",
-				RoutedPath = "/b/"
-			};
+			IRoute folderRoute = new FolderRoute("/a/", "/b/");
 			Assert.True(folderRoute.RequestMatchesPath(incomingPath));
 			Assert.Equal(expectedRoute, folderRoute.TranslateRequestToRoutedPath(incomingPath));
 		}
 		[Theory]
 		[InlineData("/a/test.json", "/b/test.json")]
 		[InlineData("/a/test.json?result=1", "/b/test.json?result=1")]
-		public async Task TestFileRouting(string incomingPath, string expectedRoute)
+		public void TestFileRouting(string incomingPath, string expectedRoute)
 		{
-			IRoute fileRoute = new FileRoute()
-			{
-				RequestedPath = "/a/test.json",
-				RoutedPath = "/b/test.json"
-			};
+			IRoute fileRoute = new FileRoute("/a/test.json", "/b/test.json");
 			Assert.True(fileRoute.RequestMatchesPath(incomingPath));
 			Assert.Equal(expectedRoute, fileRoute.TranslateRequestToRoutedPath(incomingPath));
 		}
@@ -50,11 +42,7 @@ namespace XUnitTests
 		public void TestBadFolderRouting(string requestedPath, string routedPath)
 		{
 			Assert.Throws<Exception>(() => {
-				IRoute route = new FolderRoute()
-				{
-					RequestedPath = requestedPath,
-					RoutedPath = routedPath
-				};
+				IRoute route = new FolderRoute(requestedPath, routedPath);
 				route.ValidateSetup();
 			});
 		}
@@ -67,11 +55,7 @@ namespace XUnitTests
 		public void TestBadPageRouting(string requestedPath, string routedPath)
 		{
 			Assert.Throws<Exception>(() => {
-				IRoute route = new FileRoute()
-				{
-					RequestedPath = requestedPath,
-					RoutedPath = routedPath
-				};
+				IRoute route = new FileRoute(requestedPath, routedPath);
 				route.ValidateSetup();
 			});
 		}

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace StoicDreams.FileProxy.Filter
 {
-	public static class URLToRoutePath
+	public static class Filters
 	{
 		public static Regex RemoveFromPath = new Regex(@"[A-Za-z]+\:\/\/[^\/]+", RegexOptions.IgnoreCase & RegexOptions.Singleline);
 		public static string FilterURLToRoutePath(this string input)

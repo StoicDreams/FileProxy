@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Filter;
+using System.Runtime.CompilerServices;
+
+[assembly:InternalsVisibleTo("XUnitTests")]
 
 namespace StoicDreams.FileProxy
 {
@@ -10,11 +14,11 @@ namespace StoicDreams.FileProxy
 	/// </summary>
 	public class Server : IServer
 	{
-		private Dictionary<string, IRoute> Routes;
-		public Server(IRoute[] routes)
+		private readonly Dictionary<string, IRoute> Routes;
+		public Server(IServerConfig serverConfig)
 		{
 			Routes = new Dictionary<string, IRoute>();
-			foreach (IRoute route in routes)
+			foreach (IRoute route in serverConfig.Routes)
 			{
 				route.ValidateSetup();
 				string key = route.RequestedPath.FilterURLToRoutePath().ToLower();

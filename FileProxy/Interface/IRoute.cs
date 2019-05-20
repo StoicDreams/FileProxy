@@ -7,6 +7,7 @@ namespace StoicDreams.FileProxy.Interface
 	/// </summary>
 	public interface IRoute
 	{
+		bool RouteIsRemote { get; }
 		/// <summary>
 		/// Relative url path - complete or partial - as requested by the client
 		/// </summary>
@@ -19,7 +20,6 @@ namespace StoicDreams.FileProxy.Interface
 		string RoutedPath { get; }
 		bool RequestMatchesPath(string request);
 		string TranslateRequestToRoutedPath(string rquest);
-		Task GetRoutedFile(string requestedPath);
 		/// <summary>
 		/// Use this method to validate paths meet whatever requirements.
 		/// It is expected this would be setup correctly and tested during development, so it is recommended to throw errors here instead of relying on a boolean result.

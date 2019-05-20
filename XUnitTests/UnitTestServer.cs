@@ -13,7 +13,10 @@ namespace XUnitTests
 		public void TestInit()
 		{
 			IRoute[] routes = new IRoute[0];
-			IServer server = new Server(routes);
+			IServerConfig config = new ServerConfig() {
+				Routes = routes
+			};
+			IServer server = new Server(config);
 		}
 		[Theory]
 		[InlineData("/A/test.png")]
@@ -23,11 +26,33 @@ namespace XUnitTests
 		{
 			IRoute[] routes = new IRoute[2]
 			{
-				new FolderRoute(){RequestedPath = "/a/", RoutedPath = "/b/"}
-				, new FileRoute(){RequestedPath = "/a/test.png", RoutedPath = "/b/Logo.png"}
+				new FolderRoute("/a/", "/b/")
+				, new FileRoute("/a/test.png", "/b/Logo.png")
 			};
-			IServer server = new Server(routes);
+			IServerConfig config = new ServerConfig()
+			{
+				Routes = routes
+			};
+			IServer server = new Server(config);
 			Assert.True(server.RequestMatchesRouting(clientRequest, out IRoute route));
+		}
+		[Theory]
+		[InlineData("/a/", "/a/")]
+		[InlineData("/A/", "/a/")]
+		public void TestDuplicateKeys(string keyA, string keyB)
+		{
+			Assert.Throws<Exception>(() => {
+				IRoute[] routes = new IRoute[2]
+				{
+				new FolderRoute(keyA, "/b/")
+				, new FileRoute(keyB, "/b/Logo.png")
+				};
+				IServerConfig config = new ServerConfig()
+				{
+					Routes = routes
+				};
+				IServer server = new Server(config);
+			});
 		}
 	}
 }
