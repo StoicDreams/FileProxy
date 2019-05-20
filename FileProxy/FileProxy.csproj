@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Erik Gassler</Authors>
     <Company>Stoic Dreams</Company>
     <Product>File Proxy</Product>
@@ -14,6 +14,12 @@
     <RepositoryUrl>https://github.com/StoicDreams/FileProxy</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageReleaseNotes>Pre-alpha: Project is not functional yet.</PackageReleaseNotes>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <PackageIconUrl>https://www.myfi.ws/img/sd/logoT600.png</PackageIconUrl>
+    <AssemblyVersion>0.0.2.0</AssemblyVersion>
+    <FileVersion>0.0.2.0</FileVersion>
+    <PackageTags>Stoic Dreams,Proxy</PackageTags>
+    <RootNamespace>StoicDreams.FileProxy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

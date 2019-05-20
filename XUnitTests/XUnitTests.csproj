@@ -16,4 +16,16 @@
     <ProjectReference Include="..\FileProxy\FileProxy.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="a\test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="b\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="b\test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
