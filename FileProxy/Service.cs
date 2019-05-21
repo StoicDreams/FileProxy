@@ -8,7 +8,7 @@ namespace StoicDreams.FileProxy
 	/// <summary>
 	/// Main entry point for setting up and running basic proxy services for your web app.
 	/// </summary>
-	public class Service
+	public class Service : IService
 	{
 		private readonly IServer Server;
 		public static Service StandardService(IRoute[] routes)

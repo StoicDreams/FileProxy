@@ -12,7 +12,7 @@ namespace XUnitTests
 		[Fact]
 		public async Task TestLocalFileProxy()
 		{
-			Service service = Service.StandardService(new IRoute[2]
+			IService service = Service.StandardService(new IRoute[2]
 				{
 					new FileRoute("/a/test", "/b/test.json")
 					, new FolderRoute("/a/", "/b/")
@@ -28,7 +28,7 @@ namespace XUnitTests
 		[Fact]
 		public async Task TestRemoteFileProxy()
 		{
-			Service service = Service.StandardService(new IRoute[1] {
+			IService service = Service.StandardService(new IRoute[1] {
 				new FileRoute("/a/test.png", "https://www.myfi.ws/img/sd/icon-48x48.png")
 			});
 			var result = await service.HandleProxyIfMatched("/a/test.png");
