@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using StoicDreams.FileProxy.Filter;
 
@@ -23,6 +24,15 @@ namespace StoicDreams.FileProxy.Routing
 		}
 		internal static async Task<byte[]> GetRemoteFile(string urlPath)
 		{
+			try
+			{
+				using (HttpClient client = new HttpClient())
+				{
+					HttpResponseMessage response = await client.GetAsync(urlPath);
+					return await response.Content.ReadAsByteArrayAsync();
+				}
+			}
+			catch { }
 			return default;
 		}
 		public static void ValidateSetup(string requestedPath, string routedPath, string callingClass)

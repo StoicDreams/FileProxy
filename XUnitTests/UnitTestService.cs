@@ -25,5 +25,15 @@ namespace XUnitTests
 			Assert.True(loadImage.IsMatched);
 			Assert.Equal(8386, loadImage.data.Length);
 		}
+		[Fact]
+		public async Task TestRemoteFileProxy()
+		{
+			Service service = Service.StandardService(new IRoute[1] {
+				new FileRoute("/a/test.png", "https://www.myfi.ws/img/sd/icon-48x48.png")
+			});
+			var result = await service.HandleProxyIfMatched("/a/test.png");
+			Assert.True(result.IsMatched);
+			Assert.Equal(3141, result.data.Length);
+		}
 	}
 }
