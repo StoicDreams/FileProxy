@@ -13,7 +13,7 @@ namespace StoicDreams.FileProxy
 	/// </summary>
 	public class Server : IServer
 	{
-		private readonly Dictionary<string, IRoute> Routes;
+		private readonly IDictionary<string, IRoute> Routes;
 		public Server(IServerConfig serverConfig)
 		{
 			Routes = new Dictionary<string, IRoute>();

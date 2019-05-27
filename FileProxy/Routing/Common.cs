@@ -27,7 +27,7 @@ namespace StoicDreams.FileProxy.Routing
 				, StatusCode = System.Net.HttpStatusCode.OK
 			};
 		}
-		internal static async Task<FileData> GetRemoteFile(string urlPath, Dictionary<string, object> headers)
+		internal static async Task<FileData> GetRemoteFile(string urlPath, IDictionary<string, object> headers)
 		{
 			try
 			{

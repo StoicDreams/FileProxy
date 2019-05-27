@@ -10,6 +10,6 @@ namespace StoicDreams.FileProxy
 		public IRoute[] Routes { get; set; }
 
 		public Func<string, Task<FileData>> HandleLocalFile { get; set; }
-		public Func<string, Dictionary<string, object>, Task<FileData>> HandleRemoteFile { get; set; }
+		public Func<string, IDictionary<string, object>, Task<FileData>> HandleRemoteFile { get; set; }
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using StoicDreams.FileProxy.Filter;
 using StoicDreams.FileProxy.Interface;
 
@@ -8,8 +7,8 @@ namespace StoicDreams.FileProxy.Routing
 	public class FolderRoute : IRoute
 	{
 		public bool RouteIsRemote { get; private set; }
-		public Dictionary<string, object> Headers { get; private set; }
-		public FolderRoute(string requestedPath, string routedPath, Dictionary<string, object> headers = null)
+		public IDictionary<string, object> Headers { get; private set; }
+		public FolderRoute(string requestedPath, string routedPath, IDictionary<string, object> headers = null)
 		{
 			RequestedPath = requestedPath;
 			RoutedPath = routedPath;

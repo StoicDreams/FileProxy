@@ -27,6 +27,6 @@ namespace StoicDreams.FileProxy.Interface
 		/// </summary>
 		/// <returns></returns>
 		bool ValidateSetup();
-		Dictionary<string, object> Headers { get; }
+		IDictionary<string, object> Headers { get; }
 	}
 }
