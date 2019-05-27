@@ -21,9 +21,9 @@ namespace XUnitTests
 			Assert.True(result.IsMatched);
 			byte[] buffer = result.fileData.Data;
 			Assert.Equal(@"{""test"": ""b""}", Encoding.UTF8.GetString(buffer, 0, buffer.Length).Replace("\r\n", ""));
-			var loadImage = await service.HandleProxyIfMatchedAsync("/a/logo.png");
-			Assert.True(loadImage.IsMatched);
-			Assert.Equal(8386, loadImage.fileData.Data.Length);
+			var (IsMatched, fileData) = await service.HandleProxyIfMatchedAsync("/a/logo.png");
+			Assert.True(IsMatched);
+			Assert.Equal(8386, fileData.Data.Length);
 		}
 		[Fact]
 		public async Task TestRemoteFileProxyPng()
@@ -31,9 +31,9 @@ namespace XUnitTests
 			IService service = Service.StandardService(new IRoute[1] {
 				new FileRoute("/a/test.png", "https://www.myfi.ws/img/sd/icon-48x48.png")
 			});
-			var result = await service.HandleProxyIfMatchedAsync("/a/test.png");
-			Assert.True(result.IsMatched);
-			Assert.Equal(3141, result.fileData.Data.Length);
+			var (IsMatched, fileData) = await service.HandleProxyIfMatchedAsync("/a/test.png");
+			Assert.True(IsMatched);
+			Assert.Equal(3141, fileData.Data.Length);
 		}
 		[Fact]
 		public async Task TestRemoteFileProxyIco()
@@ -43,9 +43,9 @@ namespace XUnitTests
 					{"x-test", "test" }
 				})
 			});
-			var result = await service.HandleProxyIfMatchedAsync("/a/test.ico");
-			Assert.True(result.IsMatched);
-			Assert.Equal(894, result.fileData.Data.Length);
+			var (IsMatched, fileData) = await service.HandleProxyIfMatchedAsync("/a/test.ico");
+			Assert.True(IsMatched);
+			Assert.Equal(894, fileData.Data.Length);
 		}
 	}
 }

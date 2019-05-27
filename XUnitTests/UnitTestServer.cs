@@ -2,7 +2,6 @@ using System;
 using Xunit;
 using StoicDreams.FileProxy;
 using StoicDreams.FileProxy.Interface;
-using System.Collections.Generic;
 using StoicDreams.FileProxy.Routing;
 
 namespace XUnitTests

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
-using StoicDreams.FileProxy;
 using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Routing;
 using Xunit;
