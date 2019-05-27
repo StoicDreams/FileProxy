@@ -15,7 +15,7 @@ namespace XUnitTests
 			IServerConfig config = new ServerConfig() {
 				Routes = routes
 			};
-			IServer server = new Server(config);
+			_ = new Server(config);
 		}
 		[Theory]
 		[InlineData("/A/test.png")]

@@ -10,8 +10,8 @@ namespace XUnitTests
 		[Fact]
 		public void TestRoutingInit()
 		{
-			IRoute fileRoute = new FileRoute("/a/test", "/b/test");
-			IRoute folderRoute = new FolderRoute("/a/", "/b/");
+			_ = new FileRoute("/a/test", "/b/test");
+			_ = new FolderRoute("/a/", "/b/");
 		}
 		[Theory]
 		[InlineData("/a/test.json", "/b/test.json")]
