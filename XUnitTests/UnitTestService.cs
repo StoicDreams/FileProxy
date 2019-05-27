@@ -39,7 +39,9 @@ namespace XUnitTests
 		public async Task TestRemoteFileProxyIco()
 		{
 			IService service = Service.StandardService(new IRoute[1] {
-				new FileRoute("/a/test.ico", "https://www.myfi.ws/favicon.ico")
+				new FileRoute("/a/test.ico", "https://www.myfi.ws/favicon.ico", new System.Collections.Generic.Dictionary<string, object>(){
+					{"x-test", "test" }
+				})
 			});
 			var result = await service.HandleProxyIfMatchedAsync("/a/test.ico");
 			Assert.True(result.IsMatched);

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StoicDreams.FileProxy.Interface
@@ -9,6 +10,6 @@ namespace StoicDreams.FileProxy.Interface
 		IRoute[] Routes { get; }
 		delegate Task HandleGetFile(string filePath, Func<object> handleResult);
 		Func<string, Task<FileData>> HandleLocalFile { get; }
-		Func<string, Task<FileData>> HandleRemoteFile { get; }
+		Func<string, Dictionary<string, object>, Task<FileData>> HandleRemoteFile { get; }
 	}
 }

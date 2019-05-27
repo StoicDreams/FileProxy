@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -26,12 +27,19 @@ namespace StoicDreams.FileProxy.Routing
 				, StatusCode = System.Net.HttpStatusCode.OK
 			};
 		}
-		internal static async Task<FileData> GetRemoteFile(string urlPath)
+		internal static async Task<FileData> GetRemoteFile(string urlPath, Dictionary<string, object> headers)
 		{
 			try
 			{
 				using (HttpClient client = new HttpClient())
 				{
+					if(headers != null)
+					{
+						foreach(string key in headers.Keys)
+						{
+							client.DefaultRequestHeaders.Add(key, headers[key].ToString());
+						}
+					}
 					HttpResponseMessage response = await client.GetAsync(urlPath);
 					return new FileData()
 					{

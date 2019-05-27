@@ -34,7 +34,7 @@ namespace StoicDreams.FileProxy
 				IsMatched = true;
 				if (route.RouteIsRemote)
 				{
-					fileData = await Common.GetRemoteFile(route.TranslateRequestToRoutedPath(requestPath));
+					fileData = await Common.GetRemoteFile(route.TranslateRequestToRoutedPath(requestPath), route.Headers);
 				}
 				else
 				{

@@ -1,15 +1,18 @@
 ﻿using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Filter;
+using System.Collections.Generic;
 
 namespace StoicDreams.FileProxy.Routing
 {
 	public class FileRoute : IRoute
 	{
 		public bool RouteIsRemote { get; private set; }
-		public FileRoute(string requestedPath, string routedPath)
+		public Dictionary<string, object> Headers { get; private set; }
+		public FileRoute(string requestedPath, string routedPath, Dictionary<string, object> headers = null)
 		{
 			RequestedPath = requestedPath;
 			RoutedPath = routedPath;
+			Headers = headers;
 			ValidateSetup();
 			RouteIsRemote = Common.RouteIsRemote(routedPath);
 		}

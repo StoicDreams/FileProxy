@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StoicDreams.FileProxy.Interface
 {
@@ -26,5 +27,6 @@ namespace StoicDreams.FileProxy.Interface
 		/// </summary>
 		/// <returns></returns>
 		bool ValidateSetup();
+		Dictionary<string, object> Headers { get; }
 	}
 }
