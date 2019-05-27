@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/StoicDreams/FileProxy</PackageProjectUrl>
     <RepositoryUrl>https://github.com/StoicDreams/FileProxy</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>Pre-alpha: Project is not functional yet.</PackageReleaseNotes>
+    <PackageReleaseNotes>Alpha. Project is functional but still in early development and testing.</PackageReleaseNotes>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
     <PackageIconUrl>https://www.myfi.ws/img/sd/logoT600.png</PackageIconUrl>
     <AssemblyVersion>0.0.6.0</AssemblyVersion>
