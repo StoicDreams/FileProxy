@@ -7,6 +7,6 @@ namespace StoicDreams.FileProxy.Interface
 {
 	public interface IService
 	{
-		Task<(bool IsMatched, byte[] data)> HandleProxyIfMatched(string requestPath);
+		Task<(bool IsMatched, FileData fileData)> HandleProxyIfMatchedAsync(string requestPath);
 	}
 }

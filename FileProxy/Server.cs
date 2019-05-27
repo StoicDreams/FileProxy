@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Filter;
 using System.Runtime.CompilerServices;

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using StoicDreams.FileProxy.Interface;
+﻿using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Filter;
 
 namespace StoicDreams.FileProxy.Routing

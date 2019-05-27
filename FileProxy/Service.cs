@@ -1,6 +1,5 @@
 ﻿using StoicDreams.FileProxy.Interface;
 using StoicDreams.FileProxy.Routing;
-using StoicDreams.FileProxy;
 using System.Threading.Tasks;
 
 namespace StoicDreams.FileProxy
@@ -26,24 +25,24 @@ namespace StoicDreams.FileProxy
 		{
 			Server = server;
 		}
-		public async Task<(bool IsMatched, byte[] data)> HandleProxyIfMatched(string requestPath)
+		public async Task<(bool IsMatched, FileData fileData)> HandleProxyIfMatchedAsync(string requestPath)
 		{
 			bool IsMatched = false;
-			byte[] data = null;
+			FileData fileData = null;
 			if(Server.RequestMatchesRouting(requestPath, out IRoute route))
 			{
 				IsMatched = true;
 				if (route.RouteIsRemote)
 				{
-					data = await Common.GetRemoteFile(route.TranslateRequestToRoutedPath(requestPath));
+					fileData = await Common.GetRemoteFile(route.TranslateRequestToRoutedPath(requestPath));
 				}
 				else
 				{
-					data = await Common.GetLocalFile(route.TranslateRequestToRoutedPath(requestPath));
+					fileData = await Common.GetLocalFile(route.TranslateRequestToRoutedPath(requestPath));
 				}
 			}
 
-			return (IsMatched, data);
+			return (IsMatched, fileData);
 		}
 	}
 }

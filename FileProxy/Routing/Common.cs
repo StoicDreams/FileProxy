@@ -16,20 +16,29 @@ namespace StoicDreams.FileProxy.Routing
 			if (Matches.IsProtocolFormat(route)) { return true; }
 			return false;
 		}
-		internal static async Task<byte[]> GetLocalFile(string relativePath)
+		internal static async Task<FileData> GetLocalFile(string relativePath)
 		{
 			string filepath = $"{Path.GetFullPath(".")}{relativePath}";
 			if (!File.Exists(filepath)) { return default; }
-			return await File.ReadAllBytesAsync(filepath);
+			return new FileData()
+			{
+				Data = await File.ReadAllBytesAsync(filepath)
+				, StatusCode = System.Net.HttpStatusCode.OK
+			};
 		}
-		internal static async Task<byte[]> GetRemoteFile(string urlPath)
+		internal static async Task<FileData> GetRemoteFile(string urlPath)
 		{
 			try
 			{
 				using (HttpClient client = new HttpClient())
 				{
 					HttpResponseMessage response = await client.GetAsync(urlPath);
-					return await response.Content.ReadAsByteArrayAsync();
+					return new FileData()
+					{
+						Data = await response.Content.ReadAsByteArrayAsync()
+						, ContentType = response.Content.Headers.ContentType.ToString()
+						, StatusCode = response.StatusCode
+					};
 				}
 			}
 			catch { }
