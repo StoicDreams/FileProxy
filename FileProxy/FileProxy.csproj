@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.6</Version>
+    <Version>0.0.7</Version>
     <Authors>Erik Gassler</Authors>
     <Company>Stoic Dreams</Company>
     <Product>File Proxy</Product>
@@ -16,8 +16,8 @@
     <PackageReleaseNotes>Alpha. Project is functional but still in early development and testing.</PackageReleaseNotes>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
     <PackageIconUrl>https://www.myfi.ws/img/sd/logoT600.png</PackageIconUrl>
-    <AssemblyVersion>0.0.6.0</AssemblyVersion>
-    <FileVersion>0.0.6.0</FileVersion>
+    <AssemblyVersion>0.0.7.0</AssemblyVersion>
+    <FileVersion>0.0.7.0</FileVersion>
     <PackageTags>Stoic Dreams,Proxy</PackageTags>
     <RootNamespace>StoicDreams.FileProxy</RootNamespace>
   </PropertyGroup>

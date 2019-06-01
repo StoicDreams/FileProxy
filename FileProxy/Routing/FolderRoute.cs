@@ -29,7 +29,7 @@ namespace StoicDreams.FileProxy.Routing
 		public bool RequestMatchesPath(string request)
 		{
 			request = request.FilterURLToRoutePath();
-			if(request.Length <= RoutedPath.Length) { return false; }
+			if(request.Length <= RequestedPath.Length) { return false; }
 			return request.Substring(0, RequestedPath.Length).ToLower() == RequestedPath.ToLower();
 		}
 		public string TranslateRequestToRoutedPath(string request)
