@@ -5,10 +5,11 @@ This .NET Framework library was created to simplify creating a proxy service for
 
 As a developer of several websites, I like to store common files in a central repository. But, certain website features require files to be loaded locally in order to take advantage of cacheing. And that's why I created this project. So I can retain my common files in my central CDN server, but load them to the client as if they were loaded locally from the website being visited.
 
-# Getting Startet - Nuget
+# Getting Startet - Nuget.org
 
-This project will be available for projects via a Nuget package. I will update this when it is live.
+Included in the [Stoic Dreams Web Server](https://www.nuget.org/packages/StoicDreamsWebServer/) package.
 
+Or get the standalone [Stoic Dreams File Proxy](https://www.nuget.org/packages/FileProxy/) package.
 
 ### Prerequisites
 
