@@ -8,7 +8,7 @@ namespace StoicDreams.FileProxy.Filter
 		public static string FilterURLToRoutePath(this string input)
 		{
 			string result = input.Split('?')[0];
-			if (result.Contains('#')) { result = result.Split('#')[0]; }
+			if (result.Contains("#")) { result = result.Split('#')[0]; }
 			return RemoveFromPath.Replace(result, "");
 		}
 	}

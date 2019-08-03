@@ -17,15 +17,15 @@ namespace StoicDreams.FileProxy.Routing
 			if (Matches.IsProtocolFormat(route)) { return true; }
 			return false;
 		}
-		internal static async Task<FileData> GetLocalFile(string relativePath)
+		internal static Task<FileData> GetLocalFile(string relativePath)
 		{
 			string filepath = $"{Path.GetFullPath(".")}{relativePath}";
 			if (!File.Exists(filepath)) { return default; }
-			return new FileData()
+			return Task.FromResult(new FileData()
 			{
-				Data = await File.ReadAllBytesAsync(filepath)
+				Data = File.ReadAllBytes(filepath)
 				, StatusCode = System.Net.HttpStatusCode.OK
-			};
+			});
 		}
 		internal static async Task<FileData> GetRemoteFile(string urlPath, IDictionary<string, object> headers)
 		{
