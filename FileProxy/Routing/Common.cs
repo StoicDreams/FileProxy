@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using StoicDreams.FileProxy.Filter;
 
@@ -12,6 +13,7 @@ namespace StoicDreams.FileProxy.Routing
 	/// </summary>
 	internal static class Common
 	{
+		internal static string WebRootBase { get; set; } = AppDomain.CurrentDomain.BaseDirectory;
 		internal static bool RouteIsRemote(string route)
 		{
 			if (Matches.IsProtocolFormat(route)) { return true; }
@@ -19,13 +21,41 @@ namespace StoicDreams.FileProxy.Routing
 		}
 		internal static Task<FileData> GetLocalFile(string relativePath)
 		{
-			string filepath = $"{Path.GetFullPath(".")}{relativePath}";
-			if (!File.Exists(filepath)) { return default; }
+			if (!CheckLocalWebRootFileExists(relativePath, out string filepath)
+				&& !CheckLocalProjectFileExists(relativePath, out filepath)
+				)
+			{
+				return Task.FromResult(new FileData()
+				{
+					ContentType = "text/plain",
+					Data = Encoding.UTF8.GetBytes("Content not found"),
+					StatusCode = System.Net.HttpStatusCode.NotFound
+				});
+			}
 			return Task.FromResult(new FileData()
 			{
 				Data = File.ReadAllBytes(filepath)
-				, StatusCode = System.Net.HttpStatusCode.OK
+				,
+				StatusCode = System.Net.HttpStatusCode.OK
 			});
+		}
+		private static bool CheckLocalProjectFileExists(string relativePath, out string filePath)
+		{
+			filePath = $"{Path.GetFullPath(".")}{relativePath}";
+			if (File.Exists(filePath))
+			{
+				return true;
+			}
+			return false;
+		}
+		private static bool CheckLocalWebRootFileExists(string relativePath, out string filePath)
+		{
+			filePath = $"{WebRootBase}{relativePath}";
+			if (File.Exists(filePath))
+			{
+				return true;
+			}
+			return false;
 		}
 		internal static async Task<FileData> GetRemoteFile(string urlPath, IDictionary<string, object> headers)
 		{
@@ -33,9 +63,9 @@ namespace StoicDreams.FileProxy.Routing
 			{
 				using (HttpClient client = new HttpClient())
 				{
-					if(headers != null)
+					if (headers != null)
 					{
-						foreach(string key in headers.Keys)
+						foreach (string key in headers.Keys)
 						{
 							client.DefaultRequestHeaders.Add(key, headers[key].ToString());
 						}
@@ -44,8 +74,10 @@ namespace StoicDreams.FileProxy.Routing
 					return new FileData()
 					{
 						Data = await response.Content.ReadAsByteArrayAsync()
-						, ContentType = response.Content.Headers.ContentType.ToString()
-						, StatusCode = response.StatusCode
+						,
+						ContentType = response.Content.Headers.ContentType.ToString()
+						,
+						StatusCode = response.StatusCode
 					};
 				}
 			}

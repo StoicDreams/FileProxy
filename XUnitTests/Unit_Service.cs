@@ -7,7 +7,7 @@ using Xunit;
 
 namespace XUnitTests
 {
-	public class UnitTestService
+	public class Unit_Service
 	{
 		[Fact]
 		public async Task TestLocalFileProxy()

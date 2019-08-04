@@ -3,7 +3,7 @@ using StoicDreams.FileProxy.Filter;
 
 namespace XUnitTests
 {
-	public class UnitTestFilters
+	public class Unit_Filters
 	{
 		[Theory]
 		[InlineData("https://www.test.com/folder/page.html?_=123&1=2", "/folder/page.html")]

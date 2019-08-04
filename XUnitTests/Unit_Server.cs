@@ -6,7 +6,7 @@ using StoicDreams.FileProxy.Routing;
 
 namespace XUnitTests
 {
-	public class UnitTestServer
+	public class Unit_Server
 	{
 		[Fact]
 		public void TestInit()

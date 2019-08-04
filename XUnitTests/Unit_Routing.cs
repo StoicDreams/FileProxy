@@ -5,7 +5,7 @@ using Xunit;
 
 namespace XUnitTests
 {
-	public class UnitTestRouting
+	public class Unit_Routing
 	{
 		[Fact]
 		public void TestRoutingInit()
