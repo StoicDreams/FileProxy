@@ -15,9 +15,6 @@ obj/
 *.exe
 *.dll
 
-# Ignore Solution Files
-*.sln
-
 # Ignore User Files
 *.user
 *.pubxml
